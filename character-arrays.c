@@ -2,7 +2,12 @@
 
 #define MAXLINE 1000
 
-int getline(char line[], int maxline);
+/*
+getline is a GNU/POSIX extension so it is already defined somewhere in stdio.h
+either rename getline function or compile it with -ansi flag or -std=c89 flag
+ref: https://stackoverflow.com/questions/8763052/why-do-i-get-a-conflicting-types-for-getline-error-when-compiling-the-longest
+*/
+int customgetline(char line[], int maxline);
 void copy(char to[], char from[]);
 
 /* print longest input line */
@@ -12,7 +17,7 @@ int main()
     char line[MAXLINE], longest[MAXLINE];
 
     max = 0;
-    while ((len = getline(line, MAXLINE)) > 0) 
+    while ((len = customgetline(line, MAXLINE)) > 0) 
         if (len > max) {
             max = len;
             copy(longest, line);
@@ -22,7 +27,7 @@ int main()
     return 0;
 }
 
-int getline(char s[], int lim)
+int customgetline(char s[], int lim)
 {
     int i, c;
 
