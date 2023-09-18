@@ -25,7 +25,7 @@ int main()
     return 0;
 }
 
-int customgetline()
+int customgetline(void)
 {
     int i, c;
     extern char line[];
@@ -40,7 +40,7 @@ int customgetline()
     return i;
 }
 
-void copy()
+void copy(void)
 {
     int i;
     extern char line[], longest[];
